@@ -7,8 +7,10 @@
     "@material-ui/icons": "^1.1.0",
     "aws-amplify": "^0.4.4",
     "aws-amplify-react": "^0.1.50",
+    "plotly.js": "^1.38.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-plotly.js": "^2.2.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {

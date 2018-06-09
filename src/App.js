@@ -4,28 +4,73 @@ import './App.css';
 import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 
-import Demo from './cmpts/stepDemo';
-import Test from './cmpts/test';
+import Step5 from './cmpts/step5';
 
 Amplify.configure(aws_exports);
 
 
+class Page extends Component{
+    render(){
+        console.log(this.props.page)
+        switch(this.props.page){
+            case "step5": return <Step5></Step5>;
+        }
+    }
+}
+
+class SideNav extends Component{
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+    componentDidMount(){
+        let element = document.getElementById('slide-out');
+        let instance = window.M.Sidenav.init(element, {isFixed: true})
+        /* instance.open(); */
+        this.setState({instance: instance});
+    }
+    render(){
+        return(
+            <ul id="slide-out" className="sidenav sidenav-fixed">
+                <li>
+                    <div className="user-view">
+                        <div className="background" style={{
+                            background: "linear-gradient(140deg, #59b0ff,#b288ff)",
+                        }}>
+                        </div>
+                        <a href="#user"><img className="circle" src="images/avatar.jpg"/></a>
+                        <a href="#name"><span className="white-text name">Aurélien Vasinis</span></a>
+                        <a href="#email"><span className="white-text email">aurelien.vasinis@brainsfeed.com</span></a>
+                    </div>
+                </li>
+            </ul>
+        );
+    }
+}
+
+class Layout extends Component{
+    render(){
+        return(
+            <div className="layout">
+                <SideNav></SideNav>
+                <Page page={this.props.page}></Page>
+            </div>
+        );
+    }
+}
+
 class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {page: "step5"};
+    }
     render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-            <Test></Test>
-        </p>
-        <Demo></Demo>
-      </div>
-    );
-  }
+        return (
+            <div className="App">
+                <Layout page={this.state.page}></Layout>
+            </div>
+        );
+    }
 }
 
 export default App;
