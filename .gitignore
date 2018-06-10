@@ -137,3 +137,4 @@ node_modules
 build
 /.DS_Store
 /public/.DS_Store
+/scripts/.DS_Store

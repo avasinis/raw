@@ -4,21 +4,19 @@ import './App.css';
 import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 
+import Step4 from './cmpts/step4';
 import Step5 from './cmpts/step5';
 import './cmpts/view.css';
 import './cmpts/sideNav.css';
 
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
+
 Amplify.configure(aws_exports);
 
-
-class Page extends Component{
-    render(){
-        console.log(this.props.page)
-        switch(this.props.page){
-            case "step5": return <Step5></Step5>;
-        }
-    }
-}
 
 class SideNav extends Component{
     constructor(props){
@@ -28,7 +26,6 @@ class SideNav extends Component{
     componentDidMount(){
         let element = document.getElementById('slide-out');
         let instance = window.M.Sidenav.init(element, {isFixed: true})
-        /* instance.open(); */
         this.setState({instance: instance});
     }
     render(){
@@ -66,26 +63,23 @@ class SideNav extends Component{
     }
 }
 
-class Layout extends Component{
-    render(){
-        return(
-            <div className="layout">
-                <SideNav></SideNav>
-                <Page page={this.props.page}></Page>
-            </div>
-        );
-    }
-}
-
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = {page: "step5"};
+        this.state = {page: "step4"};
     }
     render() {
         return (
             <div className="App">
-                <Layout page={this.state.page}></Layout>
+                <div className="layout">
+                    <SideNav></SideNav>
+                    <Router>
+                        <div>
+                            <Route exact path="/" component={Step4}></Route>
+                            <Route path="/step5" component={Step5}></Route>
+                        </div>
+                    </Router>
+                </div>
             </div>
         );
     }
