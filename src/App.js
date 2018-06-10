@@ -6,6 +6,7 @@ import aws_exports from './aws-exports';
 
 import Step5 from './cmpts/step5';
 import './cmpts/view.css';
+import './cmpts/sideNav.css';
 
 Amplify.configure(aws_exports);
 
@@ -39,7 +40,23 @@ class SideNav extends Component{
                             background: "linear-gradient(140deg, #59b0ff,#b288ff)",
                         }}>
                         </div>
-                        <a href="#user"><img className="circle" src="images/avatar.jpg"/></a>
+                        <div className="avatar-row">
+                            <img className="circle" src="images/avatar.jpg"/>
+                            <div className="indicators">
+                                <div>
+                                    <i className="material-icons left">attach_money</i>
+                                    7,811.19
+                                </div>
+                                <div>
+                                    <i className="material-icons left">people</i>
+                                    3,534
+                                </div>
+                                <div>
+                                    <i className="material-icons left">star</i>
+                                    32,430
+                                </div>
+                            </div>
+                        </div>
                         <a href="#name"><span className="white-text name">Aurélien Vasinis</span></a>
                         <a href="#email"><span className="white-text email">aurelien.vasinis@brainsfeed.com</span></a>
                     </div>
