@@ -135,3 +135,4 @@ awsmobilejs/\#current-backend-info
 
 node_modules
 build
+/.DS_Store
