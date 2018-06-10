@@ -11,6 +11,19 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
 
+class PieGraph extends Component{
+    render(){
+        return(
+            <Plot
+                data={[
+                    {type: 'pie', values: [86, 14], labels: ['Yes', 'No']},
+                ]}
+                layout={{title: 'Do you have this problem ?'}}
+            />
+        );
+    }
+}
+
 class BarGraph extends Component{
     render(){
         return(
@@ -19,15 +32,14 @@ class BarGraph extends Component{
                     data={[
                         {
                             type: 'bar',
-                            x: [1, 2, 3],
-                            y: [2, 5, 3]
+                            x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+                            y: [1, 1, 1, 2, 10, 7, 6, 6, 5, 15, 13, 13, 2, 2, 27, 20, 21, 19, 20, 27, 7, 18, 17, 24, 0, 0,  12]
                         }
                     ]}
                     layout={{
                         //width: 320,
                         //height: 240,
-                        title: 'How much time would you spend on a mission on average?',
-                        subTitle : 'In minutes'
+                        title: 'How much time are you spending helping other entrepreneurs online <br> on a dayli basis?'
                     }}
                 />
             </div>
@@ -116,9 +128,15 @@ class Step5_STAR extends Component{
             <div className="view">
                 <div className="row">
                     <div className="col s12">
+                        <PieGraph></PieGraph>
+                    </div>
+                    <div className="col s12">
                         <BarGraph></BarGraph>
                     </div>
                     <div className="col s12">
+                        <div className="title">
+                            What do you think?
+                        </div>
                         <Paper style={{width: "100%", position : "relative"}}>
                             <div key={this.state.feedbacks} className="completion" style={{
                                 width:  Math.floor(this.getProgress()) + "%",
