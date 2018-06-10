@@ -7,7 +7,10 @@ export default class FeedbackList extends Component{
         return(
             <ul className="collection">
             {this.props.data.map((item, idx)=>
-                <Feedback key={idx} text={item.text} score={item.score} frozen={frozen}>
+                <Feedback key={idx} index={idx + 1} text={item.text} score={item.score} frozen={frozen}
+                onRate={(score)=>{
+                    this.props.onRate(idx, score);
+                }}>
                 </Feedback>
             )}
             </ul>

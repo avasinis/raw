@@ -1,3 +1,9 @@
 .view{
     padding-left: 300px;
+    padding-top: 2em;
+}
+@media (max-width: 992px){
+    .view{
+        padding-left: 0;
+    }
 }
