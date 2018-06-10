@@ -15,8 +15,8 @@ export default class Feedback extends Component{
                 <img alt="" src=""/>
                 {this.props.text}
                 <div className="ranking">
-                    What do you think of this feedback ?
-                    <Stars n={5} amount={Math.floor(this.state.score)} onClick={(n)=> {
+                    {this.props.frozen ? "" : "What do you think of this feedback ?"}
+                    <Stars frozen={this.props.frozen} n={5} amount={Math.floor(this.state.score)} onClick={(n)=> {
                             this.setState({score: n});
                     }}></Stars>
                 </div>

@@ -9,7 +9,8 @@ function range(size, startAt = 0) {
 export class Star extends Component{
     render(){
         return(
-            <div className="star" onClick={this.props.onClick} style={{cursor:"pointer"}}>
+            <div className="star" onClick={this.props.frozen ? ()=>{} : this.props.onClick}
+                 style={{cursor: this.props.frozen ? "initial" : "pointer"}}>
 
             {this.props.active ?
              (
@@ -33,7 +34,7 @@ export class Stars extends Component{
             <div className="stars">
                 {
                     range(this.props.n).map((n)=>
-                        <Star key={n} active={this.props.amount >= n} onClick={()=> {this.props.onClick(n)}}></Star>
+                        <Star frozen={this.props.frozen} key={n} active={this.props.amount >= n} onClick={()=> {this.props.onClick(n)}}></Star>
                     )
                 }
             </div>
