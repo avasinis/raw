@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Plot from 'react-plotly.js';
+import FeedbackList from './FeedbackList';
 
 class BarGraph extends Component{
     render(){
@@ -25,15 +26,16 @@ class BarGraph extends Component{
     }
 }
 
-class FeedbackList extends Component{
-    render(){
-        return(
-            <div>
-                FeedbackList
-            </div>
-        );
+let feedbacks = [
+    {
+        text: "Hello",
+        score: 3.5
+    },
+    {
+        text: "Hello2",
+        score: 1
     }
-}
+];
 
 export default class Step5 extends Component{
     render(){
@@ -44,7 +46,8 @@ export default class Step5 extends Component{
                         <BarGraph></BarGraph>
                     </div>
                     <div className="col s12">
-                        <FeedbackList></FeedbackList>
+                        <FeedbackList data={feedbacks}>
+                        </FeedbackList>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,14 @@
+.feedback{
+    display:flex;
+    flex-direction: column;
+    font-weight: 300;
+    text-align:left;
+    width: 100%;
+}
+.feedback .ranking{
+        display:flex;
+        flex-direction: column;
+        text-align:center;
+        font-size: 0.9em;
+        font-weight: 100;
+}

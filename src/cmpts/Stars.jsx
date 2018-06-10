@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './stars.css';
+
 
 function range(size, startAt = 0) {
     return [...Array(size).keys()].map(i => i + startAt);
@@ -6,25 +8,35 @@ function range(size, startAt = 0) {
 
 export class Star extends Component{
     render(){
-        <div className="star" onClick={this.props.onClick()}>
-        if(this.props.active){
-            <i className="material-icons">star</i>
-        }
-        else{
-            <i className="material-icons">star_border</i>
-        }
+        return(
+            <div className="star" onClick={this.props.onClick} style={{cursor:"pointer"}}>
+
+            {this.props.active ?
+             (
+                 <i className="material-icons" style={{color:"gold"}}>
+                     star
+                 </i>
+             ):
+             (
+                 <i className="material-icons" style={{color: "black"}}>star_border</i>
+             )
+            }
+
         </div>
+        );
     }
 }
 
 export class Stars extends Component{
     render(){
-        <div className="stars">
-            range(this.props.n).map((n)=>{
-                return(
-                    <Star active={this.props.amount >= n} onClick={()=> {this.props.onClick(n)}}></Star>
-                );
-            })
-        </div>
+        return(
+            <div className="stars">
+                {
+                    range(this.props.n).map((n)=>
+                        <Star key={n} active={this.props.amount >= n} onClick={()=> {this.props.onClick(n)}}></Star>
+                    )
+                }
+            </div>
+        );
     }
 }

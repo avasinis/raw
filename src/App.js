@@ -5,6 +5,7 @@ import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 
 import Step5 from './cmpts/step5';
+import './cmpts/view.css';
 
 Amplify.configure(aws_exports);
 
